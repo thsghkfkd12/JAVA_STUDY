@@ -1,119 +1,181 @@
-package java_study_1119d;
+package java_study_1121;
 
 import java.util.Scanner;
 
 public class 문제 {
 
 	public static void main(String[] args) {
+		// 거스름돈
+//		주어진 돈을 입력받고 500원,100원 동전으로 거스름돈을 받으려고 한다. 거스름돈 구하는 프로그램을 작성하시오. 
+		Scanner scan = new Scanner(System.in); //작성 후 ctrl+shift+o로 임포트
+//		int obak = 500; //500원
+//		int bak = 100; //100원
+//		int change = 0; //남은 돈
+//		System.out.print("거스름돈을 입력하세요 : ");
+//		int myMoney = scan.nextInt();
+//		
+//		/* 나누기와 나머지 연산자를 이용해서 풀어보자*/
+//		change = myMoney / obak;
+//		System.out.println("500원 change : " +change);
+//		change = myMoney % obak;
+//		System.out.println(change);
+//		change = change / bak;
+//		System.out.println("100원 change : " +change);
+//		
+		/* 문제 1. if의 설명 중 다른 하나는?
+		① 조건문은 프로그램에서 특정 조건에 따라 다른 행동을 한다. 
+		② false의 경우 if문을 빠져나온다.
+		③ if-else문에서 else는 항상 작성해야한다. 
+		④ 중첩 if문 마지막에는 else를 작성해야한다.
+		 */ 
+		// 1번 정답 3
 		
-		Scanner scan = new Scanner(System.in); // 스캐너(키보드로 입력받기) 작성 후 ctrl+shift+o로 임포트
-		/*문제 1번 int 용돈 = 10000;
-			용돈 -= 3000; // 간식 구매	
-			용돈 += 5000; // 심부름 보상
-			[주관식] 최종 용돈의 값은 얼마일까요? 
+		/* 문제 2.
+		 *  int 용돈 = 3000;
+		boolean 편의점오픈여부 = true;
+		if(용돈 >= 3000 && 편의점오픈여부){
+ 		//A코드 실행
+		}else{
+ 		//B코드 실행
+		}
+		[객관식] 위 코드를 해석하고 if와 else 둘 중 어느 구문이 실행될까요?
+		① A 코드
+		② B 코드
+		③ 오류 발생
+		 * 
 		 */
-		int 용돈1 = 10000;
-		용돈1 -= 3000;
-		용돈1 += 5000;
-		System.out.println("용돈 : " +용돈1);
+		// 2번 정답 1
 		
-		/* 문제 2번 int 점수 = 80;점수 += 5; // 보너스 점수
-			점수 *= 2; // 더블 점수 이벤트
-			[주관식] 최종 점수의 값은 얼마일까요? 
+		/* 문제 3. 두 정수를 입력받아 큰 수를 출력하는 프로그램을 작성하세요.*/
+		
+		System.out.println("첫번째 정수를 입력 : ");
+		int a = scan.nextInt();
+		System.out.println("두번째 정수를 입력 : ");
+		int b = scan.nextInt();
+		
+		if(a >= b) {
+			System.out.println("a가 b보다 큽니다.");
+		}else {
+			System.out.println("b가 a보다 큽니다.");
+		}
+		
+		/* 문제 4. 사용자의 나이를 입력받아 미성년자(19세 미만)인지 성인인지 판별하는 프로그램을 작성하세요. */
+		
+		System.out.println("나이를 입력하세요 : ");
+		int age = scan.nextInt();
+		
+		if(age >= 20) {
+			System.out.println("19세 이상입니다.");
+		}else if(age <= 18){
+			System.out.println("19세 미만입니다.");
+		}else {
+			System.out.println("19세입니다.");
+		}
+		
+		/* 문제 5. 입력된 수가 5의 배수인지 판별하는 프로그램을 작성해주세요. */
+		int e = 5;
+		if(e % 5 == 0) {
+			System.out.println("5의 배수입니다");
+		}else {
+			System.out.println("5의 배수 아닙니다.");
+		}
+		
+		/* 문제 6. 숫자를 입력받아 짝수인지 홀수인지 판별하는 프로그램을 작성해주세요. */
+		int n = 8;
+		if(n % 2 == 0) {
+			System.out.println("짝수입니다.");
+		}else {
+			System.out.println("홀수입니다.");
+		}
+		
+		/* 문제 7. 숫자를 입력받아 3의 배수, 5의 배수, 3과 5의 공배수,
+		 *  또는 해당 없음을 출력하는 프로그램을 작성하세요. */
+		int m = 15;
+		if(m % 3 == 0 && m % 5 == 0) {
+			System.out.println("공배수입니다.");
+		}else {
+			System.out.println("아닙니다.");
+		}
+		
+		/* 문제 8. 세 과목(국어,수학,영어)의 점수를 입력받아 평균을 계산하고, 
+		 * 평균이 90점 이상이면 "A", 80점 이상이면 "B", 70점 이상이면 
+		 * "C",60점 이상이면 "D", 그 미만이면 "F"를 
+		 * 출력하는 프로그램을 작성하세요. */
+		System.out.println("점수 : ");
+		int num = scan.nextInt();
+		
+		if(num >= 90 && num <= 100) {
+			System.out.println("A");
+		}else if(num >=80 && num <= 90) {
+			System.out.println("B");
+		}else if(num >=70 && num <= 80) {
+			System.out.println("C");
+		}else if(num >=60 && num <= 70) {
+			System.out.println("D");
+		}else {
+			System.out.println("F");
+		}
+		
+		/* 문제 9. 두 정수를 입력받아 둘 중 하나라도 음수이면 "음수가 포함되어 있습니다.",
+		 * 둘 다 양수이면 "모두 양수입니다."를 출력하는 프로그램을 작성하세요 */
+		
+		System.out.println("정수 : ");
+		int 양 = scan.nextInt();
+		System.out.println("정수 : ");
+		int 음 = scan.nextInt();
+		
+		
+		/* 문제 10.
+		 * 사용자로부터 1부터 5까지의 숫자를 입력받아 해당하는
+		과일 이름을 출력하는 프로그램을 작성하세요. 
+		(1: 사과, 2: 바나나, 3: 오렌지, 4: 포도, 5: 복숭아)
+		 	*switch 이용해서 풀 것
 		 */
-		int 점수  = 80;
-		점수 += 5;
-		점수 *= 2;
-		System.out.println("점수 : "+점수);
+		System.out.println("숫자 : ");
+		int 숫자 = scan.nextInt();
 		
-		/* 문제 3번 int 나이 = 20;
-		boolean 면허증소지 = true;
-		boolean 운전가능 = (나이 >= 18) && 면허증소지;
-		[주관식] 운전가능은 true일까요 false일까요? 
+		switch(숫자) {
+		case 1 :
+			System.out.println("사과");
+			break;
+		case 2 :
+			System.out.println("바나나");
+			break;
+		case 3 :
+			System.out.println("오렌지");
+			break;
+		case 4 :
+			System.out.println("포도");
+			break;
+		case 5 :
+			System.out.println("복숭아");
+			break;
+	}
+		
+		/* 문제 11. 
+		 * 길동이네 피자가게는 피자를 일곱 조각으로 잘라 줍니다. 
+		 * 피자를 나눠먹을 사람의 수 n이 주어질 때, 모든 사람이 피자를 한 조각 이상 먹기 위해 필요한 피자의 수를 출력하세요.
+		
+		int n = 15; //사람의 수
+		예) 15명이 최소 한 조각씩 먹기 위해서 최소 3판이 필요합니다. n이 15라고 가정하면 피자는 3판이 필요합니다.
 		 */
-		int 나이 = 20;
-		boolean 면허증소지 = true;
-		boolean 운전가능 = (나이 >= 18) && 면허증소지;
-		System.out.println("운전가능 : "+운전가능);
 		
-		/* 문제 4번 boolean 면허증소지 = true;
-			boolean 운전가능 = !면허증소지;
-			[주관식] 운전가능은 true일까요 false일까요?
+		
+		
+		
+		/* 문제 12.
+		 * 길동이네 옷가게는 10만 원 이상 사면 5%, 30만 원 이상 사면 10%,
+			50만 원 이상 사면 20%를 할인해줍니다. 구매한 옷의 가격 price가 주어질 때, 
+			지불해야 할 금액을 출력하세요. Scanner scan = new Scanner(System.in);
+			System.out.print("금액을 입력하세요 : ");
+			int price = scan.nextInt();
+			예)
+			580000원에서 20%를 할인한 464000원을 출력합니다. 150,000원에서 5%를 할인한 142500원을 출력합니다.
 		 */
-		boolean 면허증소지1 = true;
-		boolean 운전가능1 = !면허증소지1;
-		System.out.println("운전가능 : " +운전가능1);
 		
-		/* 문제 5번 정수형 변수 a와 b를 선언하고 a에 10을 b에 5를 할당 후
-			두 개의 정수 a와 b를 곱한 결과를 출력하는 코드를 작성하세요.
-		 */
-//		System.out.println("첫번째 정수 입력 : ");
-//		int a = scan.nextInt();
-//		System.out.println("두번째 정수 입력 : ");
-//		int b = scan.nextInt();
-//		int c = a * b;
-//		System.out.println("곱한결과 : " +c);
 		
-		/* 문제 6번 boolean p = true와 boolean q = false가 있을 때, p && q의 결과는 무엇인지 출력하시오.
-		 */
-		boolean p = true;
-		boolean q = false;
-		System.out.println(p && q);
 		
-		/* 문제 7번 원의 반지름이 주어졌을 때, 원의 면적을 계산하는 프로그램을 작성하세요. final double PI = 3.14
-			double radius = 5.0; //원의 반지름
-			(원의 면적 : PI * 반지름 * 반지름)
-		 */
-		final double PI = 3.14;
-		double radius = 5.0;
-		double 원의면적 = PI * radius * radius;
-		System.out.println("원의 면적 : "+원의면적);
-		
-		/* 문제 8번 실수형 변수 weight과 height을 선언하고 weight에 70.5를 할당, 
-		    height에는 1.77를할당 후 체질량 지수를 계산하는 프로그램을 작성하세요. double weight = 70.5;
-			double height = 1.77;
-			double bmi = 0;
-		 	*BMI(체질량 지수)공식은 체중(kg) / (신장(m) * 신장(m)) 입니다.
-		 */
-		double weight = 70.5;
-		double height = 1.77;
-		double bmi = weight / (height * height);
-		System.out.println("bmi : " +bmi);
-		
-		/* 문제 9번 int 대기번호 = 1;
-			System.out.println("다음 번호: " + 대기번호++);
-			System.out.println("다음 번호: " + 대기번호++);
-			[주관식] 최종 대기번호는 몇번일까요?
-		 */
-		int 대기번호 = 1;
-		System.out.println("다음 번호: " + 대기번호++);
-		System.out.println("다음 번호: " + 대기번호++);
-		
-		/* 문제 10번 2024년 기준 길동이의 나이 age가 주어질 때, 길동이의 출생 연도를 출력하는
-			프로그램을 작성하시오. (한국 나이)
-			int age = 32;	
-			int year = 2024;
-			int result = 0;
-			코드 구현하기
-			System.out.println("출생 연도는: " + result); 
-		 	*/
-			int age = 32;
-			int year = 2024;
-			int result = 0;
-			result = year - age;
-			System.out.println("출생 연도는: " + result);
-			
-			/* 문제 11번 주어진 돈을 입력받고 500원,100원 동전으로 거스름돈을 받으려고 한다. 거스름돈 구하는 프로그램을 작성하시오.
-			 */
-			System.out.print("거스름돈을 입력하세요 : "  );
-			int myMoney = scan.nextInt();
-			int obak = 500; 
-			int bak = 100; 
-			int change = 0;
-			myMoney = 11 % obak;
-			System.out.println("오백원" +myMoney +"개");
-			myMoney = 4 % bak;
-			System.out.println("백원" +myMoney+"개");
+
 	}
 
 }
