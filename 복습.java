@@ -1,45 +1,51 @@
-package java_study_1119d;
+package java_study_1122;
+
+import java.util.Scanner;
 
 public class 복습 {
 
 	public static void main(String[] args) {
-		// 자바는 8가지 기본타입과 래퍼런스 타입 총 9가지의 데이터타입을 가지고 있음.
-		/*
-		 * 가장 많이 사용하는 데이터타입
-		 * 1. int : 정수
-		 * 2. double : 실수
-		 * 3. String : 문자열
-		 * 4. boolean : 참 혹은 거짓을 표현하고 싶을 때
+		
+		// 문제 11
+		/* 길동이네 피자가게는 피자를 일곱 조각으로 잘라 줍니다. 
+		 * 피자를 나눠먹을 사람의 수 n이 주어질 때,
+		 *  모든 사람이 피자를 한 조각 이상 먹기 위해 필요한 피자의 수를 출력하세요.
 		 */
-		int x = 10; // 10이라는 정수를 x라는 변수(식별자)에 대입
-		/*
-		 * int : 데이터 타입(정수형)
-		 * x : 변수 이름(식별자 이름)
-		 * = : 대입 연산자
-		 * 10 : 데이터
-		 */
-		int y = 20; // 변수이름은 중복될 수 없음
-		int a = 20; // 오류발생 : 변수이름 중복됨 -> 변수 이름 변경(오류 수정)
-		a = 10; // a 라는 변수 재활용 (변수를 재활용할때는 앞에 데이터타입 작성 X)
-		System.out.println("a의 최종 값은 : "+a);
+		int n = 15; //인원
+		int slice = 7; // 7조각
+		int pizzaCount = 0; // 피자 수
 		
-		int b = 20; // b라는 변수 생성 -> 선언문(초기화)
-		b = 40; // b를 재활용하다.
+		pizzaCount = n / slice; // 나머지 값이 전재함
+		System.out.println("pizza Count : " + pizzaCount);
 		
-		// 문제 11 (변수 활용하기)
-		int n1 = 100;
-		int n2 = 90;
-		int n3 = 70;
-		int avg = 0; // 평균을 구할 변수
-		
-		avg = (n1 +n2 + n3 ) / 3; // (평균 구한값을 avg에 대입)
-		System.out.println("평균 : " +avg);
+		if(n % slice != 0) { // 나머지 값이 존재한다면? if 실행
+			++pizzaCount; // 증감연산자 이용해서 피자 한판 추가
+		}
+		System.out.println("pizza Count : " + pizzaCount);
 		
 		// 문제 12
-		int money = 800;
-		double percent = money * 0.1;
-		System.out.println("800의 10%는 "+percent);
+		/* 길동이네 옷가게는 10만 원 이상 사면 5%, 30만 원 이상 사면 10%,
+			50만 원 이상 사면 20%를 할인해줍니다. 구매한 옷의 가격 price가 주어질 때, 
+			지불해야 할 금액을 출력하세요.
+		 */
+		/*
+		 * 다중 if : 만족하는 조건만 실행 후 종료
+		 */
+		Scanner scan = new Scanner(System.in);
+		System.out.println("금액을 입력하세요 : ");
+		int price = scan.nextInt();
+		if(price >= 500000) {
+			price *= 0.8; // 20%할인
+		}else if(price >= 300000) {
+			price *= 0.9; // 10%할인
+		}else if(price >= 100000) {
+			price *= 0.95; // 5%할인
+		}
+		System.out.println("price : " +price);
 		
+		
+		
+
 	}
 
 }
