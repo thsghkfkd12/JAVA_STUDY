@@ -1,47 +1,55 @@
-package java_study_1122;
-
-import java.util.Scanner;
+package java_study_1126;
 
 public class 복습 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {  // 메인함수
 		
-		// 문제 11
-		/* 길동이네 피자가게는 피자를 일곱 조각으로 잘라 줍니다. 
-		 * 피자를 나눠먹을 사람의 수 n이 주어질 때,
-		 *  모든 사람이 피자를 한 조각 이상 먹기 위해 필요한 피자의 수를 출력하세요.
-		 */
-		int n = 15; //인원
-		int slice = 7; // 7조각
-		int pizzaCount = 0; // 피자 수
-		
-		pizzaCount = n / slice; // 나머지 값이 전재함
-		System.out.println("pizza Count : " + pizzaCount);
-		
-		if(n % slice != 0) { // 나머지 값이 존재한다면? if 실행
-			++pizzaCount; // 증감연산자 이용해서 피자 한판 추가
+		// for문 (반복문)
+		for(int i=0; i<3; i++) {
+//			System.out.println("Hello world!");
 		}
-		System.out.println("pizza Count : " + pizzaCount);
 		
-		// 문제 12
-		/* 길동이네 옷가게는 10만 원 이상 사면 5%, 30만 원 이상 사면 10%,
-			50만 원 이상 사면 20%를 할인해줍니다. 구매한 옷의 가격 price가 주어질 때, 
-			지불해야 할 금액을 출력하세요.
-		 */
-		/*
-		 * 다중 if : 만족하는 조건만 실행 후 종료
-		 */
-		Scanner scan = new Scanner(System.in);
-		System.out.println("금액을 입력하세요 : ");
-		int price = scan.nextInt();
-		if(price >= 500000) {
-			price *= 0.8; // 20%할인
-		}else if(price >= 300000) {
-			price *= 0.9; // 10%할인
-		}else if(price >= 100000) {
-			price *= 0.95; // 5%할인
+		// 1부터 100까지의 숫자 중 3의 배수... 범위가 정해지면 for문 아니면 while문
+		for(int i =1; i<=100; i++) {
+			if(i % 3 == 0 && i % 5 == 0) { // 3과 5의 공배수
+				System.out.println("FizzBuzz");
+			}else if(i % 3 == 0) {
+				System.out.println("Fizz");
+			}else if(i % 5 == 0) {
+				System.out.println("Buzz");
+			}else
+				System.out.println(i);
 		}
-		System.out.println("price : " +price);
+		
+		// 세균 : 1시간에 두배만큼 증식
+		int n = 2;
+		int t = 10;
+		// 1시간부터 10시간이라는 범위가 정해짐 -> for
+		for(int i=1; i<=t; i++) { // 10번 실행
+			n = n * 2;
+			// n *= 2;
+			System.out.println(n);
+		}
+		
+		// 콜라츠 추측
+		/* 주어진 수가 1이 될 때까지
+		 * 다음 작업을 반복하면, 모든 수를 1로 만들 수 있다는 추측입니다.
+		 * 작업은 다음과 같습니다. => 범위 지정 x => while문으로 코딩하자!
+		 */
+		int count = 0; // 몇번 반복하는지 체크하는 변수
+		int n2 = 6; // 주어진 수
+		while(n2 != 1) {  // n2가 1이 될때까지 계속 반복함
+			if(n2 % 2 == 0) { // 짝수야?
+				n2 = n2 / 2; // 짝수라면 2로 나눈다.
+				++count;
+			}else { // 짝수가 아니라면?
+				n2 = n2 * 3 + 1; // 3을 곱하고 1을 더함
+				++count;
+			}
+		}
+		System.out.println("count : " +count); // 8번 만에 1이 됩니다.
+		
+		
 		
 		
 		
