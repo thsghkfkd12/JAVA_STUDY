@@ -1,93 +1,66 @@
-package java_study_1122;
+package java_study_1128;
 
 public class 수업 {
 
 	public static void main(String[] args) {
-			// (int i=0;)초기식 : (i<3;)조건식 : 중괄호(안) : (++i)증감식
-		for(int i=0; i<3; i++) { // for문 시작
-			System.out.println("Hello World!");
-		} // for문 종료
+		
+//		***length : 빈도수 100%
+		String text = "ediya";
+		System.out.println("문자열 길이 "+text.length()); // 문자열 길이 출력
+		
+		String userId = "홍길동";
+		if(userId.length() >= 10) { // 문자열길이가 10이상이라면?
+			System.out.println("아이디는 10글자 미만으로 작성해주세요");
+		}else  {
+			System.out.println("사용가능한 아이디입니다.");
+		}
 
-		// "안녕하세요" 20번 출력하기
-		// for문 안에서만 중복x 밖에서는 가능 (지역 변수)
-		for(int hi=0; hi<20; hi++) {
-			System.out.println("안녕하세요 : " +hi);
-		} 
-		    // (1) : (2) : (4)  
-		for(int i=0; i<9; i++) {//(3)
-			System.out.println("i : " +i);
-		}
+		// concat : 두 문자열을 합친다.(빈도수 5%?
+		String a = "apple";
+		String b = "watch";
+		System.out.println("문자열 합치기 " +a.concat(b));
 		
-		/*
-		 * for문은 이것만 알아두자
-		 * 1. for문 실행순서 초기식 -> 조건식 -> 코드 실행 -> 증감식
-		 * 2. 조건식이 만족할 때 까지 반복함
-		 */
+		// *substring : 부분 문자열 추출(빈도수 80~90%)
+		String text1 = "Hello, World!";
+		System.out.println(text1.substring(0, 5));
+		// 퀴즈 : Wor <- 서브스트링으로 해당 당어 출력하기
+		System.out.println(text1.substring(7, 10));
 		
-		// 1부터 10까지 총합구하기
-		int sum = 0;
-		for(int i=1; i<=10; i++) {
-			sum = sum + i;
-//			System.out.println(i);
-		}
-		System.out.println("1부터 10까지 총합은 : " +sum);
+		//indexOf : 문자열 검색 -> 해당 문자가 몇번 째 위치하는지 조회
+		System.out.println(text1.indexOf("l")); // l은 2번째 위치
+		System.out.println(text1.indexOf("W")); // W는 7번째 위치
 		
-		// 1부터 20까지의 숫자중 짝수만 출력하기
-		for(int i=1; i<=20; i++) {
-			// for문 안에 if/else, switch 등등 구현 가능
-			if(i % 2 == 0) {
-				System.out.println(i+"는 짝수입니다.");
-			}
-		}
+		// ***replace : 문자열 대체
+		String word = "순대국밥";
+		System.out.println(word.replaceAll("순대","돼지")); //순대를 돼지로 대체
+		// 순대국밥에서 돼지국밥으로 변경
 		
-		// 퀴즈) 1부터 30까지의 숫자중 5의 배수만 출력하기
-		for(int i=1; i<=30; ++i) { // i가 30까지 반복
-			if(i % 5 == 0) { // 배수 판단
-				System.out.println(i+"는 5의 배수입니다.");
-			}
-		}
+		// *toUpper,toLower : 소문자 -> 대문자, 대문자 -> 소문자 변경
+		String code = "abcd00";
+		System.out.println(code.toUpperCase()); // 소문자에서 대문자로 강제변환
 		
-		// break;
-		for(int i=1; i<=5; i++) {
-			if(i == 2) {
-				System.out.println(i);
-				break; // i가 2라면, break -> for문 탈출(끝)
-			}
-			System.out.println(i);
-		}
-		// 구구단 출력해보기
-		int 구구단 = 2;
-		for(int i=1; i<=9; i++) {
-			System.out.println(구구단+"*"+i+"="+구구단*i); 
-		}
+		// **trim : 공백 제거
+		String word2 = "     안녕하세요?    ";
+		System.out.println(word2.trim()); // 앞뒤 공백 제거
 		
-		/*
-		 * while 문은 조건이 참인 동안 코드 블록을 반복적으로 실행하는 반복문
-		 */
-		int i = 1;
-		while(i <= 5) { // while문 시작
-			System.out.println("while i : "+i);
-			i++; // 코드구현 + 증감식
-		} // while문 종료
+		// ***split : 문자 분할(실무에서 데이터분석 혹은 코디테스트 단골 손님!)
+		String word3 = "한화이글스,두산베어스,롯데자이언츠";
+		String[] resilt = word3.split(","); // 해당 문자를 콤마로 나눈다.
+		System.out.println(resilt[0]);
+		System.out.println(resilt[2]);
 		
-		// 커피 자판기 예제
-		int coffee = 10; // 커피 10잔 (1번)
-		while(coffee > 0) {
-			System.out.println("커피를 판매합니다. 남은 커피 : " +coffee);
-			coffee--;
-			if(coffee == 0) { // 커피가 0잔이라면? (2번)
-				System.out.println("커피가 다 떨어졌습니다. 판매를 중지합니다.");
-				break; // for문과 마찬가지로 break문을 사용할 수 있습니다. (3)
-			}
-		}
+		// **contains : 특정 문자열 포함되어 있는지 여부확인
+		String word4 = "kkmkkm39@gmail.com";
+		System.out.println(word4.contains("@")); //있으면 true 없으면 false
+		System.out.println(word4.contains("e")); //있으면 true 없으면 false
 		
-		int x = 0;
-		while(true) {
-			x++;
-			if(x == 10) break;
-		}
-		//for문은 10kg빼기 위해서는 운동장 10바퀴 뛰어
-		//while문은 10kg 뺄때까지 운동장 계속 뛰어
+		// ***equals : 문자열 비교 (*자바특징)
+		String food = "등심돈까스";
+		String food2 = "등심돈까스";
+		String food3 = "치즈돈까스";
+		// ==(비교 연산자), 자바에서는 문자열 비교는 equals로 합니다
+		System.out.println(food.equals(food2)); // 두 문자가 동일한지 비교
+		System.out.println(food.equals(food3)); // 두 문자가 동일한지 비교
 		
 		
 	}
