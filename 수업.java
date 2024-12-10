@@ -1,67 +1,47 @@
-package java_study_1128;
+package java_study_1210;
 
+// 클래스 이름 : 수업
+// 클래스이름은 앞에 대문자로 작성한다.
 public class 수업 {
 
-	public static void main(String[] args) {
+	int x = 10; // 필드변수(전역변수)
+	public 수업() { // 생성자
 		
-//		***length : 빈도수 100%
-		String text = "ediya";
-		System.out.println("문자열 길이 "+text.length()); // 문자열 길이 출력
+	}
+	public int getX() { // 메소드
+		return x;
+	}
+	
+	public static void main(String[] args) { // 메소드(메인)
+		// 객체지향 : 유지보수하기 쉽게 코드를 나눈다.
+		// 지금까지 main함수에 개발을 진행함
+		// 근데 목요일부터는 새로운 함수에 코드를 작성할 예정
 		
-		String userId = "홍길동";
-		if(userId.length() >= 10) { // 문자열길이가 10이상이라면?
-			System.out.println("아이디는 10글자 미만으로 작성해주세요");
-		}else  {
-			System.out.println("사용가능한 아이디입니다.");
-		}
-
-		// concat : 두 문자열을 합친다.(빈도수 5%?
-		String a = "apple";
-		String b = "watch";
-		System.out.println("문자열 합치기 " +a.concat(b));
+		// 붕어빵 클래스를 호출(파일 불러오기)
+		// new : 클래스 호출
+		// x : 붕어빵 클래스 변수이름
+		붕어빵 x = new 붕어빵();
+		x.붕어빵종류 = "팥"; // 붕어빵 클래스에 있는 붕어빵종류 변수 사용
+		x.붕어빵가격 = 500; // 붕어빵 클래스에 있는 붕어빵가격 변수 사용
+		// . : 접근하다.
+		System.out.println("붕어빵 종류 : "+x.붕어빵종류);
+		System.out.println("붕어빵 가격 : "+x.붕어빵가격);
 		
-		// *substring : 부분 문자열 추출(빈도수 80~90%)
-		String text1 = "Hello, World!";
-		System.out.println(text1.substring(0, 5));
-		// 퀴즈 : Wor <- 서브스트링으로 해당 당어 출력하기
-		System.out.println(text1.substring(7, 10));
+		/*
+		 * 메소드안에 작성된 변수는 '지역변수' 라고 함
+		 * 지역변수는 선언과 동시에 값을 초기화(must) 해야합니다
+		 */
 		
-		//indexOf : 문자열 검색 -> 해당 문자가 몇번 째 위치하는지 조회
-		System.out.println(text1.indexOf("l")); // l은 2번째 위치
-		System.out.println(text1.indexOf("W")); // W는 7번째 위치
+		int num = 0; // 0값 초기화하기
+		System.out.println(num);  // 에러 발생!
 		
-		// ***replace : 문자열 대체
-		String word = "순대국밥";
-		System.out.println(word.replaceAll("순대","돼지")); //순대를 돼지로 대체
-		// 순대국밥에서 돼지국밥으로 변경
+		붕어빵 y = new 붕어빵(); // 붕어빵 클래스 재호출(새롭게 호출)
+		// 값을 대입한적도 없는데 값이 출력됩! 즉, 필드변수는 자동으로 초기화가 된다.
+		System.out.println("붕어빵 종류 : "+y.붕어빵종류);
+		System.out.println("붕어빵 가격 : "+y.붕어빵가격);
 		
-		// *toUpper,toLower : 소문자 -> 대문자, 대문자 -> 소문자 변경
-		String code = "abcd00";
-		System.out.println(code.toUpperCase()); // 소문자에서 대문자로 강제변환
-		
-		// **trim : 공백 제거
-		String word2 = "     안녕하세요?    ";
-		System.out.println(word2.trim()); // 앞뒤 공백 제거
-		
-		// ***split : 문자 분할(실무에서 데이터분석 혹은 코디테스트 단골 손님!)
-		String word3 = "한화이글스,두산베어스,롯데자이언츠";
-		String[] resilt = word3.split(","); // 해당 문자를 콤마로 나눈다.
-		System.out.println(resilt[0]);
-		System.out.println(resilt[2]);
-		
-		// **contains : 특정 문자열 포함되어 있는지 여부확인
-		String word4 = "kkmkkm39@gmail.com";
-		System.out.println(word4.contains("@")); //있으면 true 없으면 false
-		System.out.println(word4.contains("e")); //있으면 true 없으면 false
-		
-		// ***equals : 문자열 비교 (*자바특징)
-		String food = "등심돈까스";
-		String food2 = "등심돈까스";
-		String food3 = "치즈돈까스";
-		// ==(비교 연산자), 자바에서는 문자열 비교는 equals로 합니다
-		System.out.println(food.equals(food2)); // 두 문자가 동일한지 비교
-		System.out.println(food.equals(food3)); // 두 문자가 동일한지 비교
-		
+		// 필드변수(전역변수) : 초기화 옵션
+		// 메소드안에 변수(지역변수) : 초기화 필수
 		
 	}
 
