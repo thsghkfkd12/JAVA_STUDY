@@ -1,218 +1,159 @@
-package java_study_1206;
+package java_study_1212;
 
-import java.util.Scanner;
+class Book{
+	String title;
+	String author;
+	
+	Book(String title,String author) {
+		
+		this.title = title;
+		this.author = author;
+		
+	}
+}
+
+//class Calculator{
+//	int 게임;
+//	
+//	public int add(int a, int b) {
+//		return a+b;
+//	}
+//	
+//}
 
 public class 문제풀이 {
 
 	public static void main(String[] args) {
-		
-		// 7번
-		int n = 15;
-		// 7조각을 주는 이상한 피자가게
-		// 상수 변수명은 대문자로
-		final int SLICE = 7; // 한판에 7조각
-		
-		// 게시판에서 많이쓴다.
-		int x = n % SLICE;
-		int result = n / SLICE;
-		if(x > 0) { // 못먹은 사람이 있다면
-			++result; // 증감 연산자로 한판 더
-		}
-		
-		// 8번 팩토리얼
-//		System.out.println("정수 입력받기 : ");
-		Scanner scan = new Scanner(System.in);
-////		int num = scan.nextInt();
-//		int factorial = 1;
-////		for(int i=2; i<=num; i++) {
-//			factorial = factorial * i;
-//		}
-////		System.out.println(num+"!="+factorial);
-		
-		// 10번 다음과 같은 패턴을 출력하는 프로그램을 작성하세요.
 		/*
-		  ****
-		  ***
-		  **
-		  *
+		 * [문제1]문항
+			클래스 내에서 같은 이름의 메소드를 여러 개 정의하는 것을 무엇이라고 하는가?
+			a) 오버라이딩
+			b) 오버로딩
+			c) 캡슐화
+			1 정답 b) 오버로딩
 		 */
-		for(int i=4; i>0; i--) {
-			for(int j=0; j<i; j++) {
-				System.out.print("*");
-			}
-			System.out.println(); // 개행용
-		}
-		
-		// 11번 힌트는 .length() 이용해서 if/else 처리하기
-		String word = "hh";
-		System.out.println("문자 길이 : "+word.length());
-		
-		// 17번
-		int[] array = {149, 180, 192, 170};
-		int height = 167;
-		int count = 0;
-		// for-each 이용해서 풀어보가기
-		for(int i : array) {
-			if(height < i) { // if로 키큰사람 체크하기
-				++count; // 증감연산자 이용
-			}
-		}
-		System.out.println("정답 : "+count);
-		
-		
-		/*
-		 * [문제18 - 난이도 Up]문항군 전략가 길동이는 전쟁 중 적군이 다음과 같은
-		 * 암호 체계를 사용한다는 것을 알아냈습니다.
-		1. 암호화된 문자열 cipher를 주고받습니다. 
-		2. 그 문자열에서 code의 배수 번째 글자만 진짜 암호입니다.
-		  문자열 cipher와 정수 code가 변수로 주어질 때 해독된 암호 문자열을 출력하시오. 
-		String cipher = "dfjardstddetckdaccccdegk";
-		int code = 4;
-		예) "dfjardstddetckdaccccdegk" 의 4번째, 8번째, 12번째, 16번째, 20번째, 24번째
-		 글자를 합친 "attack"을 출력합니다
+		/*[문제2]문항
+			객체의 필드 값을 반환하는 메소드를 일반적으로 무엇이라고 부르는가?
+			a) getter
+			b) setter
+			c) constructor
+			d) finalizer
+		 * 1 정답 a) getter
 		 */
-		String cipher = "dfjardstddetckdaccccdegk";
-		int code = 4;
-//		System.out.print(cipher.substring(3, 4));
-//		System.out.print(cipher.substring(7, 8));
-//		System.out.print(cipher.substring(11, 12));
-//		System.out.print(cipher.substring(15, 16));
-//		System.out.print(cipher.substring(19, 20));
-//		System.out.print(cipher.substring(23, 24));
-		String answer= ""; // 최종 결과
-		for(int i=0; i<cipher.length(); i++) { //문자 길이만큼 반복문 돌리기
-			if((i+1) % code == 0) { // code의 배수라면?
-				answer += cipher.substring(i, i+1); // substring으로 한글자만 가져옴
-			}
-		}
-		System.out.println("해독한 단어는 : "+answer+"입니다.");
 		
 		/*
-		 *  [문제19 - 난이도 Up]문항
-			전화번호 문자열 phone_number로 주어졌을 때, 전화번호의 뒷 4자리를 제외한
-			나머지 숫자를 전부 *으로 가린 문자열을 출력하는 프로그램을 완성해주세요.
-			 String phone_number = “0171238888”;
-			예)
-			027778888은 *****8888
-			01033334444은 *******4444가 나와야 합니다.
+		 * [문제3]문항
+			Java에서 메소드의 반환 타입을 지정하지 않을 때 사용하는 키워드는?
+			a) null
+			b) void
+			c) empty
+			d) none
+			3. 정답 b) void
 		 */
-		// 첫번째 방법
-		String phone_number = "027778888";
-		
-		int temp = phone_number.length() - 4; // 4자리를 제외한
-		String star = "";
-		for(int i=0; i<temp; i++) {
-			star += "*"; 
-		}
-		String lastNumber= phone_number.substring(temp); // 6번째 자리부터 모두 나오게 하기
-		System.out.println("lastNumber : "+lastNumber);
-		phone_number = star + phone_number.substring(temp);
-		System.out.println("phone_number : "+phone_number);
-		
-		// 2번째 방법split
-		String[] num =phone_number.split(""); // split으로 한글자 한글자 배열에 담기
-		String result2 = ""; //결과
-		for(int i=0; i<num.length; i++) { // 배열 길이만큼 반복
-			if(i < (phone_number.length()-4)) {
-				result2 += "*";
-			}else {
-				result2 += num[i];
-			}
-		}
-		System.out.println("result2 : "+result2);
-		
-		String str = "Hello";
-		String str2 = "World";
-		System.out.println(str + str2); // HelloWorld
-		String a = "";
-		for(int i=0; i<3; i++) {
-			a += "!";
-		}
-		System.out.println(a);
-		// "=" : 대입연산자 (덮어씌우기, 기존 값을 무시하고 새로운 값을 대입함)
 		
 		/*
-		 * [문제20 - 난이도 Up] [while문 이용하기]문항  사칙연산
-			○○치킨은 치킨을 시켜먹으면 한 마리당 쿠폰을 한 장 발급합니다.
-			쿠폰을 열 장 모으면 치킨을 한 마리 서비스로 받을 수 있고, 서비스 치킨에도쿠폰이 발급됩니다. 
-			시켜먹은 치킨의 수 chicken이 변수로 주어질 때받을 수 있는 최대 서비스 치킨의 수를 출력하세요.
-			int chicken = 100;
-			예)
-			1. 1081마리를 주문하면 쿠폰이 1081장 발급되므로 서비스 치킨 108마리를 주문할 수 있습니다. 
-			그리고 쿠폰이 1장 남습니다. 
-			2. 108마리를 주문하면 쿠폰이 108장 발급되므로 서비스 치킨 10마리를주문할 수 있습니다. 
-			그리고 쿠폰이 8장 남습니다.
-			 3. 10마리를 주문하면 쿠폰이 10장 발급되므로 서비스 치킨 1마리를
-			주문할 수 있습니다. 
-			4. 1마리를 주문하면 쿠폰이 1장 발급됩니다.
-			 5. 가지고 있는 쿠폰이 총 10장이므로 서비스 치킨 1마리를 추가로주문할 수 있습니다.
-			  6. 따라서 108 + 10 + 1 + 1 = 120 을 출력합니다.
+		 * [문제4]문항
+			다음 중 올바른 메소드 선언은?
+			a) public void myMethod();
+			b) public void myMethod() { }
+			c) public myMethod() { }
+			d) void public myMethod() { }
+			4. 정답 b) public void myMethod() { }
 		 */
-		int chicken = 100; // 백마리 주문
-		int chickenCount = 0; // 총 내가 먹을 수 있는 치킨수
-		// 1. 반복을 하면서 쿠폰이 있는지? 었는지를 계속 체크해야합니다.
-		// 2. 10번 반복할지 5번 반복할지 모름 -> while
-		while(chicken >= 10) { // 3. 조건식 생각하기
-			int coupon = chicken % 10; // 나머지값을 쿠폰에 대입
-			chickenCount += chicken / 10;
-			chicken = coupon + chicken / 10;
-		}
-		System.out.println("최대 서비스 치킨 수 : "+chickenCount);
 		
 		/*
-		 * [문제21 - 난이도 Up] [contains 활용하기]문항
-		문자열 my_string이 변수로 주어집니다.
-		 my_string에서 중복된 문자를 제거하고
-		하나의 문자만 남긴 문자열을 출력하세요. 
-		String my_string = "people";
-		예) "people"에서 중복된 문자 "p"와 "e"을 제거한 "peol"을 출력합니다.
+		 * [문제5]문항
+			메소드 오버로딩(Overloading)에 대한 설명으로 옳은 것은?
+			a) 같은 이름의 메소드를 여러 개 정의하는 것
+			b) 부모 클래스의 메소드를 자식 클래스에서 재정의하는 것
+			c) 메소드의 접근 제어자를 변경하는 것
+			d) 메소드의 반환 타입을 변경하는 것
+			4. 정답 a) 같은 이름의 메소드를 여러 개 정의하는 것
 		 */
-		String my_string = "people"; // p와 e가 중복됨
-		String[] strArray = my_string.split("");
-		String result3 = ""; // 최종 결과
-		for(int i=0; i<strArray.length; i++) {
-			if(!result3.contains(strArray[i])) {
-				result3 += strArray[i];
-			}
-		}
-		System.out.println("정답 : "+result3);
- 		
+		
 		/*
-		 *[문제22 - 난이도 Up]문항
-		개미 군단이 사냥을 나가려고 합니다.
-		개미군단은 사냥감의 체력에 딱 맞는병력을 데리고 나가려고 합니다. 
-		장군개미는 5의 공격력을, 병정개미는 3의공격력을 일개미는 1의 공격력을 가지고 있습니다.
-		 예를 들어 체력 23의 여치를 사냥하려고 할 때, 일개미 23마리를 데리고
-		가도 되지만, 장군개미 네 마리와 병정개미 한 마리를 데리고 간다면더
-		적은 병력으로 사냥할 수 있습니다.
-		사냥감의 체력 hp가 변수로 주어질 때, 
-		사냥감의 체력에 딱 맞게 최소한의 병력을 구성하려면 몇 마리의 개미가필요한지를 출력하시오.
-		int hp = 24;
-		예)
-		1. hp가 24이므로, 장군개미 네마리 병정개미 한마리 일개미 한마리로
-		사냥할 수 있습니다. 따라서 6을 출력합니다.
-		 2. hp가 999이므로, 장군개미 199 마리 병정개미 한마리 일개미 한마리로
-		사냥할 수 있습니다. 따라서 201을 출력합니다.
-		 */ 
-		// 그리드(탐욕) 알고리즘
-		int hp = 24; // 여치 hp
-		int count2 = 0;
+		 * [문제6]문항
+			다음 중 메소드의 반환 타입을 올바르게 설명한 것은?
+			a) 메소드가 실행되는 횟수를 나타낸다.
+			b) 메소드가 반환하는 값의 데이터 타입을 나타낸다. 
+			c) 메소드의 매개변수 개수를 나타낸다. 
+			d) 메소드의 접근 제어자를 나타낸다
+			6. 정답 b) 메소드가 반환하는 값의 데이터 타입을 나타낸다. 
+		 */
 		
-		count2 += hp / 5; // 장군개미
-		hp %= 5;
-		count2 += hp / 3 ; // 병정개미
-		hp %= 3;
-		count2 += hp;
-		System.out.println(count2);
+		/*
+		 * [문제7]문항
+		다음 중 메소드의 매개변수 전달 방식에 대한 설명으로 옳은 것은?
+		a) 기본 자료형은 참조에 의한 전달(Pass by Reference)이다. 
+		b) 참조 자료형은 값에 의한 전달(Pass by Value)이다. 
+		c) 기본 자료형은 값에 의한 전달(Pass by Value)이다. 
+		d) 모든 자료형은 참조에 의한 전달(Pass by Reference)이다.
+		7. 정답 a) 기본 자료형은 참조에 의한 전달(Pass by Reference)이다. 
+		 */
+		
+		/*
+		 * [문제8]문항
+		 *  Calculator 클래스를 생성 후 두 정수를 매개변수로 받아 
+		 *  그 합을 반환하는 메소드 add를 작성하세요.
+		 */
+//		Calculator a1 = new Calculator();
+//		int as = a1.add(10, 20);
+//		System.out.println("결과 : "+as);
+		
+		/*
+		 * [문제10]문항
+		객체를 생성할 때 사용하는 키워드는?
+		a) class
+		b) new
+		c) this
+		d) static
+		10. 정답 a) class
+		 */
+		
+		/*
+		 * [문제11]문항
+			클래스의 주요 구성 요소가 아닌 것은?
+			a) 필드
+			b) 메소드
+			c) 생성자
+			d) 루프
+			10. 정답 d) 루프
+		 */
+		
+		/*
+		 * [문제12]문항
+			클래스 내에서 데이터를 저장하는 변수를 무엇이라고 하는가?
+			a) 메소드
+			b) 생성자
+			c) 필드
+			d) 객체
+			12. 정답 c) 필드
+		 */
+		
+		/*
+		 * [문제13]문항
+			클래스의 인스턴스를 생성할 때 자동으로 호출되는 특별한 메소드는?
+			a) main 메소드
+			b) 생성자
+			c) getter 메소드
+			d) setter 메소드
+			13. 정답 b) 생성자
+		 */
+		
+		/*
+		 * [문제14]문항
+			[객체 생성하기]
+			"Book" 클래스를 정의하고,
+			제목(title)과 저자(author)를 속성으로 추가한 후, 
+			이 클래스의 객체를 생성하는 코드를 작성하세요. 
+		 */
+		
+		Book 책 = new Book("책","저자");
+		System.out.println(책.title);
+		System.out.println(책.author);
 		
 		
-		
-		
-		
-		
-		
-		
-	
+
 	}
 
 }
