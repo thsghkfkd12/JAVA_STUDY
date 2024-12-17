@@ -1,104 +1,70 @@
-package java_study_1212;
+package java_study_1217;
 
-class 학생{
-	String 이름; // 필드변수(전역변수), 초기화 생략가능
-	int 학년;
+import java.util.Scanner;
+
+/*
+ * 계산기 클래스는 더 이상 수정불가능 (내장클래슨느 실제 수정 불가능)
+ * Scanner 클래스 -> 내장 클래스(자바를 설치했을 때 이미 자바안에 있는 클래스 들)
+ * Random 클래스 
+ */
+class 계산기{
+	// 파라미터값을 각 더해서 리턴하는 함수 sum
+	public int sum(int x, int y) {
+		return x + y;
+	}
+
+class 계산기2{
+	// 파라미터값을 각 더해서 리턴하는 함수 sum
+	public int sum(int x, int y) {
+		return x + y;
+	}
+	public int minus(int x, int y) {
+		return x - y;
+	}
+}
+}
+// *****extends : 상속 
+// 상속을 이용해 '계산기' 클래스 기능을 물려 받을 수 있음'
+// '계산기3'(자식클래스 == subClass)은
+//'계산기'(부모클래스 == superClass)에 있는 필드변수와 메소를 사용할 수 있다.
+
+class 계산기3 extends 계산기{
+	
+	// 부모클래스에 있는 메소드 가져오기
+	// @Override : 오버라이딩(부모클래스 메소드 ***************'재정의')
 	/*
-	 * 클래스 구조(객체지향 프로그램언어(C++, Python, Javza 등..)에 있는 공통 개념)
-	 * 1. 필드변수
-	 * 2. 메소드 : 메소드는 특정 작업을 수행하는 코드의 집합
-	 * 		=> 능력있는 개발자는 메소드를 여러개 만들어서 코드를 분리함.
-	 * 3. 생성자
+	 * 오버로딩 : 메소드 이름은 중복 허용하기(파라미터 타입 다르게 지정)
+	 * 오버라이딩 : 부모클래스에 정의된 메소드를 자식클래스에서 호출해서 메소드 '재정의'
 	 */
-	
-	/*
-	 * 메소드의 기본 구조
-	 * public : 접근제어자
-	 * int : 반환 데이터타입(리턴값)
-	 * add : 메소드 이름 (보통 동사로 작성을 합니다.)
-	 * (int a, int b) : 인자값 or 매개변수 or 파라미터(v)
-	 * 파라미터 : 메소드가 작업을 수행하는 데 필요한 데이터
-	 * return : 반환 데이터타입에 맞는 반환값(메소드의 결과를 반환)
-	 */
-//	s3.add(10, 20);
-	public int add(int a, int b) {
-		
-		return a + b;
-	}
-//	s3.minus(30, 10);
-	public int minus(int a, int b) {
-		return a - b;
+	@Override 
+	public int sum(int x, int y) {
+		// TODO Auto-generated method stub
+		return super.sum(x, y);
 	}
 	
-	// 퀴즈) 곱하는 메소드, 나누기 메소드를 만들어주세여.
-//	s3.mul(20, 10);
-	public int mul(int a, int b) {
-//		반환 데이터타입하고 리턴타입은 동일해야 합니다
-		return a * b;
-	}
-//	s3.div(30, 5);
-	public int div(int a, int b) {
-		return a / b;
-	}
-	
-	// 반환 데이터타입(int, String, double, char, boolean...)이 String입니다.
-	// 반환 데이터타입에 총 9가지가 올수 있음. + void = 총 10개
-	public String 취미를소개하다() {
-		String 취미 = "등산";
-		return 취미; // 리턴타입과 반환데이터타입은 항상 일치해야한다.
-	}
-	public void 취미를소개하다2() {
-		// void는 '리턴 없음'을 의미합니다.
-		System.out.println("취미는 운동입니다.");
+	public int minus(int x, int y) {
+		return x - y;
 	}
 	
 }
 
-
-// 클래스 파일 하나에 public class 한번만 작성 가능
-public class 수업 { 
+public class 수업 {
 
 	public static void main(String[] args) {
 		
+		계산기 계산기1 = new 계산기();
+		int result = 계산기1.sum(10, 10);
+		System.out.println("결과 : "+result);
+		
+		// 빼기와 더하기 기능이 있는 클래스가 필요
 		/*
-		 * Java 메모리 : Heap 이라는 영역에 저장(인스턴스 변수)
+		 * 자바는 **무료 오픈소스**이기 때문에 내장클래스를 확인할 수 있음
 		 */
-		학생 s1 = new 학생(); // new : 클래스를 불러오다 == (클래스를 인스턴스화(객체) 하다)
-		s1.이름 = "홍길동"; // 클래스를 new 불러오면 -> 필드변수 전근(.)이 가능하다.
-		s1.학년 = 3;
-		System.out.println("이름 : "+s1.이름+ ",학년 : "+s1.학년);
-		System.out.println(s1);  // Heap에 저장된 위치(메모리 주소) 조회
+		Scanner scan = new Scanner(System.in); // 컨트롤쉬프트영어o (자동 임포트)
 		
-		// 동일한 클래스 한번 더 호출하기
-		학생 s2 = new 학생();
-		System.out.println(s2);  // Heap에 저장된 위치(메모리 주소) 조회
-		s2.이름 = "김길동";
-		s2.학년 = 3;
-		System.out.println("이름 : "+s2.이름+ ",학년 : "+s2.학년);
-		
-		s1.학년 = 1; // 홍길동 학년 수정
-		System.out.println("이름 : "+s1.이름+ ",학년 : "+s1.학년);
-		
-		학생 s3 = new 학생();
-		System.out.println(s3); // 새로운 Heap 영역에 저장
-		
-		int result = s3.add(10, 20);
-		System.out.println("결과 : " +result);
-		
-		int result2 = s3.minus(30, 10);
-		System.out.println("결과2 : "+result2);
-		
-		int result3 = s3.mul(20, 10);
-		System.out.println("결과3 : "+result3);
-		
-		int result4 = s3.div(30, 5);
-		System.out.println("결과4 : "+result4);
-		
-		String 취미 = s3.취미를소개하다();
-		System.out.println("취미는 "+취미);
-		s3.취미를소개하다2();
-		
+		계산기3 계산기3 = new 계산기3();
+		계산기3.sum(10, 20); // 자식클래스가 부모클래스에 있는 메소드 사용 가능
 		
 	}
 
-}
+}	
