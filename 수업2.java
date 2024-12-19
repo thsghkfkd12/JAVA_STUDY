@@ -1,58 +1,59 @@
-package java_study_1217;
+package java_study_1219;
 
-class Food{
-	String name;
-	int calories;
-	
-	public Food(String name, int calories) {
-		this.name = name;
-		this.calories = calories;
-	}
-	
-	public void eat() {
-		System.out.println("Eating : " + this.name);
-	}
-	
-	public int getCalories() {
-		return this.calories;
-	}
-} // Food 클래스 끝
+interface MusicPlayer{ // 음악 플레이어 인터페이스 정의
+	/*
+	 * 인터페이스에는 '메소드 구현'만 가능.
+	 */
+	public void play();
+	public void pause();
+	public void stop();
+	public void next();
+	public void previous();
+}
 
-class Pizza extends Food{ // 피자 클래스
-	String[] toppings;
+interface XX{
 	
-	public Pizza(String name, int calories, String[] toppings) {
-		super(name, calories); // super : 부모클래스 생성자 호출
-		this.toppings = toppings;
-	}
+}
+
+// 핸드폰 플레이어 클래스 생성
+class SmartphonePlayer implements MusicPlayer, XX{ // 인터페이스는 콤마로 구분해서 여러개 구현가능
+	
+	/*
+	 * 인터페이스의 주요 특징
+	 * 1. 계약 : 인터페이스는 클래스가 큭정 메소드를 반드시 구현하도록 강제합니다.
+	 * 2. 다중구현 : Java 클래스는 여러 인터페이스를 동시에 구현할 수 있습니다.
+	 * 3. 추상화 : 인터페이스는 메소드의  선언만을 포함하며, 구현은 포함되지 않습니다.
+	 */
 	@Override
-	public void eat() { // 부모클래스에 있는 eat메소드 재정의
-		System.out.println(" Eating a slice of " + super.name + " pizza ");
+	public void play() {
+		System.out.println("Smartphone : Pausing Music");
 	}
-	public void showToppings() {
-		for(String s : toppings) {
-			System.out.println(" Toppings : " + s + " , ");
-		}
-	}
-	
-} // 끝
-class Sushi extends Food{ // 스시클래스
-	String fishType;
-	
-	public Sushi(String name, int calories, String fishType) {
-		super(name, calories); // super : 부모클래스 생성자 호출
-		this.fishType = fishType; // 필드 변수 대입
-	}
-	
+
 	@Override
-	public void eat() {
-		System.out.println(" Eating "+ this.name +" sushi ");
+	public void pause() {
+		System.out.println("Smartphone : Pausing Music");	
 	}
-	
-	public void showFishType() {
-		System.out.println(" FishType : " + this.fishType );
+
+	@Override
+	public void stop() {
+		System.out.println("Smartphone : Stopping Music");	
 	}
+
+	@Override
+	public void next() {
+		System.out.println("Smartphone : Pausing Next track");
+	}
+
+	@Override
+	public void previous() {
+		System.out.println("Smartphone : Pausing Previous track");	
+	}
+	// MusicPlayer 인터페이스를 구현하다.
 	
+}
+
+// 자바의 모든 클래스는 기본으로 'Object'라는 최상위 클래스를 상속받는다.
+class DD extends Object{
 	
 }
 
@@ -60,32 +61,11 @@ public class 수업2 {
 
 	public static void main(String[] args) {
 		
-		Food food = new Food("Food" , 100); // 부모클래스
-		
-		String[] toppings = {"Tomato", "Mozzarlla", "Basil"};
-		Pizza margherita = new Pizza("margherita", 300, toppings); 
-		
-		Sushi salmonRoll = new Sushi("salmon Roll", 250, "Salmon");
-		
-		food.eat(); // 푸드 클래스 eat 호출
-		margherita.eat(); // 피자 클래스 eat(재정의한 메소드) 호출
-		salmonRoll.eat(); // 스시 클래스 eat(재정의한 메소드) 호출
-		
-		margherita.showToppings();
-		salmonRoll.showFishType();
-		
-		/* 코드설명
-		 * Food 클래스 : 기본 음식 클래스, 모든 음식의 공통 속성인
-		 * name 과 calorise 그리고 eat() 메소드를 가진다.
-		 * 
-		 * Pizza와 Sushi 클래스 : Food를 상속받아 eat 메소드를 오버라이딩
-		 * 또한 Pizza 클래스에는 토핑을 보여준느 showToppings() 메소드 구현
-		 * Sushi 클래스에는 생선종류를 보여주는 showFishType() 메소드 구현
-		 * 
-		 * 핵심 : Pizza와 Sushi 클래스는 Food 클래스의 속성과 메소드를 상속받아
-		 * 재사용할 수 있습니다.
-		 */
-		
+		SmartphonePlayer phone = new SmartphonePlayer();
+		phone.play();
+		phone.pause();
+		phone.previous();
+
 	}
 
 }
