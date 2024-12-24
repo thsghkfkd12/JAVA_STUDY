@@ -1,15 +1,18 @@
-package java_study_1220.bank;
+package java_study_1224;
 
 /*
- * 기능 정의서 (메소드(기능) 정의)
+ * interface OR class 명명규칙 '대문자로 시작'(모든 언어 규칙)
  */
-public interface Account { // 계좌의 기본 기능을 정의합니다.
+public interface Account { // 계좌의 기본 기능을 정의(선언)합니다.
+	// 첫번째 순서 인터페이스 만들기
 	/*
-	 * 인터페이스에 작성된 메소드는 '무조건' 접근지정자가 'public'(생략가능)
+	 * 인터페이스 특징
+	 * 1. 구현 불가능, 선언만 가능합니다.
+	 * 2. public만 작성할 수 있습니다.
 	 */
-	public void deposit(double amount); // 입금
-	public boolean withdraw(double amount); // 출금
-	public double getBalance(); // 잔약조회
-	public String getAccountNumber(); // 계좌번호 조회
+	void deposit(double amount); // 입금
+	boolean withdraw(double amount); // 출금
+	double getBalance(); // 잔액조회
+	String getAccountNumber(); // 계좌번호 조회
 
 }
