@@ -1,72 +1,73 @@
-package java_study_1220;
+package java_study_1226;
 
-/*
- * 1. 모든 Java의 클래스는 Object를 상속받고 있음
- * 2. 기본 생성자
- */
-class B extends Object{
-	// 1. 필드변수(전역변수) : 모든 메소드에서 접근 가능
-	int x;
+class Book_{
+	// 전역변수(필드변수)
+	String title;
+	int price = 1000;
 	
-	public B() { // default 생성자
-		// 생성자 특징
-		/*
-		 * 1. 리턴값 없음
-		 * 2. 메소드이름과 클래스이름이 동일
-		 */
-	}
-	// 오버로딩 : 메소드이름은 동일하나 파라미터 값이 다를 때
-	// 오버로딩 => 메소드이름 짓기 힘들어서
-	public B(int x) { // 파라미터 값이 존재한 생성자
-		this.x = x; // this를 이용해서 파라미터 값을 필드변수 'x'에 대입
+	public Book_(String title, int price) { // 파라미터에 있는 title와 price도 지역변수
+		this.title = title;
+		this.price = price;
 	}
 	
-	public void showMessage() {
-		System.out.println("안녕하세요 저는 B클래스 입니다.");
+	public void showBook() {
+		String author = "작가미상"; // 지역변수 : showBook메소드안에서만 사용가능
+		System.out.println("title : " + title); // 메소드안에서 전역변수 접근가능
+		System.out.println("price : " + price);
 	}
+	
+	public void showAuthor() {
+		String author = "작가미상"; // 서로다른 곳에 있어서 이름동일가능
+		int price = 100; // 지역변수 price
+		System.out.println("author : " + author);
+		System.out.println("title : " + title); // 전역변수는 어디든 사용 가능(단, 클래스안에서)
+		System.out.println("price : " + price);
+		System.out.println("price : " + this.price); // 전역변수(필드변수) price
+	}
+	
 	
 }
-
-// extends : 상속
-// Java는 다중상속을 지원 X => interface
-// implements : 구현하다 ('A' 클래스는 'C'를 구현하다.
-class A extends B implements C{
-	// A클래스는 '자식클래스' B클래스는 '부모클래스'
-	/*
-	 * A클래스는 B클래스에 선언된 메소드와 필드변수를 사용할 수 있음.
-	 * 단, 접근지정자가 public 혹은 protected로 도어있어야 함
-	 */
-	@Override
-	public void showMessage() { // 부모클래스 메소드 '재정의'(오버라이딩)
-		System.out.println("저는 A클래스 입니다.");
-	}
-
-	@Override
-	public void showMessage2() {
-		/*
-		 * 인터페이스에 정의된 메소드를 '강제로' 구현해야하는 특징을 가지고 있음, (계약 관계)
-		 */
-		System.out.println("인터페이스 메소드 재정의 하기");
-	}
-}	
-interface C{ // 정의서
-	/*
-	 * 인터페이스는 메소드 '선언'만 사능 '구현' 불가능
-	 */
-	public void showMessage2();
-}
-
 
 public class 복습 {
 
 	public static void main(String[] args) {
 		
-		A a = new A(); // A클래스 호출('A'클래스 객체 생성
-		//A클래스는 부모의 필드변수와 메소드를 사용할 수 있음
-		a.showMessage();
-		a.x = 10;
-		a.showMessage2();
+		// 자바는 클래스(객체)도 '데이터 타입'이다.
+		Book_[] bookList = new Book_[2]; // Book 타입을 저장하는 배열
+		
+		
+		Book_ book1 = new Book_("자바의 정석", 2000);
+		bookList[0] = book1; // 0번 인덱스에 book1 대입
+		bookList[1] = new Book_("파이썬의 정석", 1000);
+		
+		for(Book_ b : bookList) { // 첫번째 향상된 for문
+			b.showBook();
+			// 1. 퀴즈 책 제목이 '자바의 정석'인 책의 정보(showBook)를 출력하기
+			// 2. bookList에 저장된 책의 총 pirce는 얼마인지 구하기
+		}
+		
+		System.out.println("");
+		for(int i=0; i<2; i++) { // 두번째 방법
+			bookList[i].showBook();
+		}
+		
+		System.out.println("");
+		int priceSum = 0;
+		
+		for(Book_ b : bookList) {
+			if(b.title.equals("자바의 정석")) {
+				b.showBook();
+			}
+			if("자바의 정석".equals(b.title)) {
+				b.showBook();
+			}
+			priceSum += b.price;
+		}
+		System.out.println("총합 : " + priceSum);
+		
 
+		
+		
 	}
 
 }
