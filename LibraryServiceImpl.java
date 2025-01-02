@@ -1,56 +1,53 @@
-package java_study_1226;
+package library;
 
-// 인터페이스를 구현할 클래스 명명 구칙 맨뒤에 Impl(implements) 이라고 작성한다.
-// 순서 : 2번째
-public class LibraryServiceImpl implements LibraryService {
+import java.util.ArrayList;
+
+public class LibraryServiceImpl implements LibrarayService {
+
+	private ArrayList<Book> books;
 	
-	private Book[] books; // Book타입을 저장하는 클래스 배열
-	private int bookCount;
-	
-	public LibraryServiceImpl(int capacity) {
-		books = new Book[capacity];
-		bookCount = 0;
+	public LibraryServiceImpl() {
+		books = new ArrayList<>();
 	}
 	
-	
 	@Override
-	public void addBook(Book book) { // 도서 추가 '재정의'
-		if(bookCount < books.length) {
-			books[bookCount] = book; // Book 배열에 대입 
-			bookCount++;  // 1씩 카운트 증가
-			System.out.println(book.getTitle() + " 도서가 추가되었습니다.");
-		}else {
-			System.out.println("도서가 가득 찼습니다.");
-		}
-		
+	public void addBook(Book book) {
+		books.add(book); // ArrayList에 book 추가 (도서 추가)
+		System.out.println("도서가 추가되어습니다.");
 	}
 
 	@Override
-	public void searhBook(String keyword) { // 도서 검색 '재정의'
-		// 도서 제목으로 검색하는 로직구현
-		boolean isFlag = false; // 플래그 값
-		// keyword가 제목 or 저자 or 책고유번호
-		for(int i=0; i<bookCount; i++) {
-			// contains : 해당 문자가 포함하는지 여부를 true 혹은 false로 return 한다
-			if(books[i].getTitle().contains(keyword) ||
-			   books[i].getAuthor().contains(keyword) || 
-			   books[i].getIsbn().contains(keyword)) {
-				
-				System.out.println(books[i].toString()); // 해당 도서 출력
-				isFlag = true;
+	public void searchBook(String keyword) {
+		boolean isSearch = false;
+		for(Book book : books) {
+			// 퀴즈 : 로직구현 (26일 소스를 참고해서 풀어보세요)
+			// contains 활용학;
+			if(book.getTitle().contains(keyword) ||
+			   book.getAuthor().contains(keyword) ||
+			   book.getIsbn().contains(keyword)) {
+				System.out.println(book.getTitle() + ", " + book.getAuthor());
+				isSearch = true; // 플래그값 수정
 			}
-		} // for문 끝
-		if(!isFlag) {
-			System.out.println("검색 결과가 없습니다.");
 		}
-		
+		if(!isSearch) {
+			System.out.println("검색 결과가 없습니다.");
+		}	
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
+	@Override
+	public void removeBook(String isbn) {
+		for(int i=0; i<books.size(); i++) {
+			Book book = books.get(i);
+			if(book.getIsbn().equals(isbn)) { // 도서 고유번호가 같다면
+				books.remove(i); // 해당 도서 제거
+				System.out.println("도서가 삭제되었습니다.");
+			}
+		}
+	}
+
+	@Override
+	public ArrayList<Book> getAllBooks() {
+		return new ArrayList<>(books); // books ArrayList 리턴
+	}
+
 }
